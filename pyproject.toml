@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Multi Payment System"
+version = "0.0.1a"
+authors = [
+  { name="Aman", email="mail@amanskywalker.xyz" },
+]
+description = "A Multi Payment Warper for easy integration to the payment system"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU LESSER GENERAL PUBLIC LICENSE",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Amanskywalker/multi-payment-system"
+"Bug Tracker" = "https://github.com/Amanskywalker/multi-payment-system/issues"
