@@ -1,31 +1,31 @@
 """
 Razorpay Service Base configurations to be used with other services
 """
-# Django libraries
-from django.conf import settings
+import base64
 
-# razorpay Library
-import razorpay
-
-# import the logging library
-import logging
-
-# Get an instance of a logger
-logger = logging.getLogger(__name__)
-
-
-class RazorpayService:
+class RazorpayServiceBase:
     """
     Abstract class to connet with the Razorpay services
     """
 
-    API_KEY = settings.SERVICES["razorpay"]["KEY_ID"]
-    API_SECRET = settings.SERVICES["razorpay"]["SECRET"]
+    API_KEY = None
+    API_SECRET = None
 
-    CLIENT = razorpay.Client(auth=(API_KEY, API_SECRET))
+    URL = None
+    HEADER = {
+        'Content-Type' : "application/json",
+        'Authorization' : f"Basic {base64.b64encode(f'{API_KEY}:{API_SECRET}'.encode('ascii')).decode('ascii')}"
+    }
+    PAYLOAD = {}
 
     def __init__(self, api_key, api_secret):
         """
         override the authentication
         """
-        self.CLIENT = razorpay.Client(auth=(api_key, api_secret))
+        # generate the keys
+        auth_token = base64.b64encode(f"{api_key}:{api_secret}".encode("ascii")).decode("ascii")
+
+        self.HEADER['Authorization'] = f"Basic {auth_token}"
+
+
+        
