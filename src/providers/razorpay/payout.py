@@ -1,3 +1,6 @@
+from razorpay import RazorpayServiceBase
+from razorpay.resources import Customer
+
 class RazorpayPayout (RazorpayServiceBase):
     "Class to manage the payouts in razorpay X"
 
